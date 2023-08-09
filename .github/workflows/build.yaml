@@ -1,15 +1,3 @@
-Chatbox
-对话
-
-
-
-
-
-高级软件工程师
-你可以将脚本中的 "java-version" 参数的值改为 "1.9"，以使用 Java 19。修改后的脚本如下所示：
-
-YAML
-复制
 name: android_build
 
 on:
