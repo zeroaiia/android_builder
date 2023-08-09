@@ -12,50 +12,7 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v1
         with:
-          java-version: 1.9
-      - id: get-project
-        name: Get project name
-        run: echo "::set-output name=PROJECT::$(cat project-to-build)"
-      - name: Clone project
-        run: git clone --depth=1 ${{ steps.get-project.outputs.PROJECT }} project
-      - name: Build the app
-        working-directory: ./project
-        run: |
-          if [ ! -f "gradlew" ]; then gradle wrapper; fi
-          chmod +x gradlew
-          ./gradlew assembleDebug --stacktrace
-      - name: Upload APK
-        uses: actions/upload-artifact@v2
-        with:
-          name: my-build-apk
-          path: ./**/*.apk
-修改后的脚本将在 Ubuntu 最新版本上使用 Java 1.9 来构建 Android 应用程序。请确保你的构建环境中已经安装了 Java 1.9。
-
-word count: 179, token count: 589, tokens used: 4414, model: gpt-3.5-turbo
-
-改为openjdk version "20.0.1" 2023-04-18 版本
-
-word count: 12, token count: 34
-
-抱歉，目前还没有名为 "openjdk version 20.0.1" 的 Java 版本。最新的 OpenJDK 版本是 OpenJDK 17。如果你想在 GitHub Actions 中使用 OpenJDK 17，你可以将脚本中的 "java-version" 参数的值改为 "17"。修改后的脚本如下所示：
-
-YAML
-复制
-name: android_build
-
-on:
-  workflow_dispatch:
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout the code
-        uses: actions/checkout@v2
-      - name: Set up JDK
-        uses: actions/setup-java@v1
-        with:
-          java-version: 19
+          java-version: 17
       - id: get-project
         name: Get project name
         run: echo "::set-output name=PROJECT::$(cat project-to-build)"
